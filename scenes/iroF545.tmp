@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd8om14255asa"]
+
+[ext_resource type="Script" path="res://IronDomeButton.gd" id="1_slsw0"]
+[ext_resource type="Texture2D" uid="uid://bikr5bf1575k4" path="res://Textures/iron-dome-resize.png" id="2_oancl"]
+
+[node name="IronDomeButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_slsw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oancl")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

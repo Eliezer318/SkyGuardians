@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://cllvfduiioew7"]
+
+[ext_resource type="Script" path="res://scripts/Hud.gd" id="1_o3hc8"]
+[ext_resource type="FontFile" uid="uid://b1hiy1xs23qan" path="res://Xolonium-Regular.ttf" id="2_e8e01"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_o3hc8")
+
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 255.0
+offset_top = 42.0
+offset_right = 295.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Message" type="Label" parent="."]
+offset_left = -21.0
+offset_top = 103.0
+offset_right = 495.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 60
+text = "   Sky Guardians"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 0.008
+anchor_bottom = 0.007
+offset_left = 128.0
+offset_top = 403.0
+offset_right = 287.32
+offset_bottom = 491.44
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 60
+text = "START"
+
+[node name="lives" type="Label" parent="."]
+visible = false
+offset_left = 229.0
+offset_top = 122.0
+offset_right = 269.0
+offset_bottom = 210.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="scoreMessage" type="Label" parent="."]
+visible = false
+offset_left = 37.0
+offset_top = 41.0
+offset_right = 252.0
+offset_bottom = 137.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 50
+text = "SCORE:"
+
+[node name="myScore" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 201.0
+offset_right = 70.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 40
+
+[node name="livesMessage" type="Label" parent="."]
+visible = false
+offset_left = 42.0
+offset_top = 120.0
+offset_right = 261.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 50
+text = "LIVES: "
+
+[node name="BastScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 40.0
+offset_top = 202.0
+offset_right = 486.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 50
+text = "BEST SCORE:"
+
+[node name="BestScore" type="Label" parent="."]
+visible = false
+offset_left = 428.0
+offset_top = 203.0
+offset_right = 473.0
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("2_e8e01")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

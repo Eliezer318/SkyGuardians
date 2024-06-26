@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8bpf1ilh7rdx"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_efa6t"]
+[ext_resource type="PackedScene" uid="uid://5to1075sirca" path="res://scenes/enemy_rocket.tscn" id="2_rxgrk"]
+[ext_resource type="PackedScene" uid="uid://cllvfduiioew7" path="res://scenes/hud.tscn" id="3_yyhng"]
+[ext_resource type="AudioStream" uid="uid://bd5p4cypkcsup" path="res://Textures/music/the-war-184745.mp3" id="4_cp5c7"]
+
+[sub_resource type="Curve2D" id="Curve2D_vr0lx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 712, 0, 0, 0, 0, 336, 752, 0, 0, 0, 0, 312, 768, 0, 0, 0, 0, 288, 776, 0, 0, 0, 0, 280, 792, 0, 0, 0, 0, 272, 800, 0, 0, 0, 0, 264, 808, 0, 0, 0, 0, 248, 824, 0, 0, 0, 0, 232, 840, 0, 0, 0, 0, 224, 848, 0, 0, 0, 0, 216, 856, 0, 0, 0, 0, 216, 872, 0, 0, 0, 0, 216, 888, 0, 0, 0, 0, 216, 896, 0, 0, 0, 0, 216, 904, 0, 0, 0, 0, 216, 912, 0, 0, 0, 0, 208, 920, 0, 0, 0, 0, 200, 928, 0, 0, 0, 0, 192, 936, 0, 0, 0, 0, 184, 944, 0, 0, 0, 0, 176, 952, 0, 0, 0, 0, 168, 952, 0, 0, 0, 0, 160, 960, 0, 0, 0, 0, 152, 968, 0, 0, 0, 0, 152, 960, 0, 0, 0, 0, 152, 952, 0, 0, 0, 0, 144, 936, 0, 0, 0, 0, 136, 920, 0, 0, 0, 0, 136, 912, 0, 0, 0, 0, 128, 904, 0, 0, 0, 0, 128, 896, 0, 0, 0, 0, 288, 712)
+}
+point_count = 32
+
+[sub_resource type="Curve2D" id="Curve2D_oh2o3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, 664, 0, 0, 0, 0, 352, 600, 0, 0, 0, 0, 392, 536, 0, 0, 0, 0, 408, 488, 0, 0, 0, 0, 432, 440, 0, 0, 0, 0, 448, 384, 0, 0, 0, 0, 472, 312, 0, 0, 0, 0, 496, 232, 0, 0, 0, 0, 512, 168, 0, 0, 0, 0, 520, 104, 0, 0, 0, 0, 528, 64, 0, 0, 0, 0, 536, 40, 0, 0, 0, 0, 544, 16, 0, 0, 0, 0, 544, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 784, 0, 0, 0, 0, 0, 872, 0, 0, 0, 0, 0, 952, 0, 0, 0, 0, 0, 960, 0, 0, 0, 0, 0, 960, 208, 0, 0, 0, 0, 960, 312, 0, 0, 0, 0, 960, 392, 0, 0, 0, 0, 960, 488, 0, 0, 0, 0, 960, 544, 0, 0, 0, 0, 936, 592, 0, 0, 0, 0, 904, 648, 0, 0, 0, 0, 896, 696, 0, 0, 0, 0, 888, 728, 0, 0, 0, 0, 880, 776, 0, 0, 0, 0, 880, 824, 0, 0, 0, 0, 864, 896, 0, 0, 0, 0, 840, 944, 0, 0, 0, 0, 848, 992, 0, 0, 0, 0, 864, 1040, 0, 0, 0, 0, 864, 1072, 0, 0, 0, 0, 800, 1072, 0, 0, 0, 0, 728, 1080, 0, 0, 0, 0, 648, 1080, 0, 0, 0, 0, 536, 1072, 0, 0, 0, 0, 440, 1088, 0, 0, 0, 0, 368, 1080, 0, 0, 0, 0, 264, 1080, 0, 0, 0, 0, 208, 1072, 0, 0, 0, 0, 192, 1048, 0, 0, 0, 0, 168, 1016, 0, 0, 0, 0, 168, 976, 0, 0, 0, 0, 192, 952, 0, 0, 0, 0, 208, 928, 0, 0, 0, 0, 240, 904, 0, 0, 0, 0, 256, 872, 0, 0, 0, 0, 296, 840, 0, 0, 0, 0, 336, 800, 0, 0, 0, 0, 368, 768, 0, 0, 0, 0, 392, 736, 0, 0, 0, 0, 368, 712, 0, 0, 0, 0, 344, 696, 0, 0, 0, 0, 328, 672, 0, 0, 0, 0, 320, 664)
+}
+point_count = 59
+
+[node name="Main" type="Node"]
+script = ExtResource("1_efa6t")
+enemy_rocket_scene = ExtResource("2_rxgrk")
+
+[node name="EnemyRocketTimer" type="Timer" parent="."]
+wait_time = 0.75
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="EnemyRocketPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vr0lx")
+
+[node name="EnamyRocketLocation" type="PathFollow2D" parent="EnemyRocketPath"]
+position = Vector2(288, 712)
+rotation = 0.694738
+
+[node name="target" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oh2o3")
+
+[node name="targetLocation" type="PathFollow2D" parent="target"]
+position = Vector2(320, 664)
+rotation = -1.10715
+
+[node name="Hud" parent="." instance=ExtResource("3_yyhng")]
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cp5c7")
+
+[connection signal="timeout" from="EnemyRocketTimer" to="." method="_on_enemy_rocket_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="Hud" to="." method="new_game"]

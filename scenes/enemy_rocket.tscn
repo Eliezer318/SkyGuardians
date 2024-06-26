@@ -1,0 +1,110 @@
+[gd_scene load_steps=17 format=3 uid="uid://5to1075sirca"]
+
+[ext_resource type="Script" path="res://scripts/enemy_rocket.gd" id="1_bj4fi"]
+[ext_resource type="Texture2D" uid="uid://d1umqjyfh7kkm" path="res://Textures/explosion1.png" id="2_1epvj"]
+[ext_resource type="Texture2D" uid="uid://dnccg0ckhb85a" path="res://Textures/Missile05.png" id="2_wv50d"]
+[ext_resource type="Texture2D" uid="uid://mopw3i8anxij" path="res://Textures/explosion2.png" id="3_qmxnh"]
+[ext_resource type="Texture2D" uid="uid://dq280cie2fvtq" path="res://Textures/explosion3.png" id="4_5b7je"]
+[ext_resource type="Texture2D" uid="uid://cuyuruykeqqux" path="res://Textures/explosion4.png" id="5_jpbx2"]
+[ext_resource type="Texture2D" uid="uid://b07tinrmesgxc" path="res://Textures/explosion5.png" id="6_mwlb4"]
+[ext_resource type="Texture2D" uid="uid://c6amjsyres0pm" path="res://Textures/explosion_02_1.png" id="8_4fd3c"]
+[ext_resource type="Texture2D" uid="uid://25qcxatljbx4" path="res://Textures/explosion_02_2.png" id="9_fq0im"]
+[ext_resource type="Texture2D" uid="uid://ddm6fbepx6xdu" path="res://Textures/explosion_02_3.png" id="10_yi8jr"]
+[ext_resource type="Texture2D" uid="uid://cyesyu0qpf826" path="res://Textures/explosion_02_4.png" id="11_7y6e6"]
+[ext_resource type="Texture2D" uid="uid://7v2osoq4juys" path="res://Textures/explosion_02_5.png" id="12_rfeqg"]
+[ext_resource type="AudioStream" uid="uid://x4yl682ywyw3" path="res://Textures/music/rumble.mp3" id="13_me2v0"]
+[ext_resource type="AudioStream" uid="uid://by4wuc7u0bvmm" path="res://Textures/music/explosion.mp3" id="14_73kwh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vvy2b"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1epvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qmxnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5b7je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jpbx2")
+}, {
+"duration": 6.0,
+"texture": ExtResource("6_mwlb4")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wv50d")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_4fd3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fq0im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yi8jr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7y6e6")
+}, {
+"duration": 6.0,
+"texture": ExtResource("12_rfeqg")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s327"]
+size = Vector2(20, 104)
+
+[node name="EnemyRocket" type="CharacterBody2D"]
+position = Vector2(349, 991)
+disable_mode = 1
+script = ExtResource("1_bj4fi")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1475, 0.186667)
+sprite_frames = SubResource("SpriteFrames_vvy2b")
+animation = &"new_animation"
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_3s327")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="explostion" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="delete" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="interception_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_me2v0")
+
+[node name="explosion_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_73kwh")
+
+[connection signal="timeout" from="explostion" to="." method="_on_explostion_timeout"]
+[connection signal="timeout" from="delete" to="." method="_on_delete_timeout"]
